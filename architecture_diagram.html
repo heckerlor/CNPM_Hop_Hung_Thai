@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Architecture of Edge AI for PPE Compliance Monitoring</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .canvas-container {
+            width: 1100px;
+            background: #ffffff;
+        }
+        svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="canvas-container">
+<svg viewBox="0 0 1100 820" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Drop Shadows -->
+    <filter id="shadow-card" x="-8%" y="-8%" width="116%" height="120%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08" />
+    </filter>
+    <filter id="shadow-cloud" x="-10%" y="-10%" width="120%" height="125%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#38bdf8" flood-opacity="0.25" />
+    </filter>
+    <filter id="shadow-server" x="-12%" y="-12%" width="124%" height="130%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="2" dy="5" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.25" />
+    </filter>
+
+    <!-- Gradients -->
+    <linearGradient id="cloud-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <feStop offset="0%" stop-color="#ffffff" />
+      <feStop offset="60%" stop-color="#f0f9ff" />
+      <feStop offset="100%" stop-color="#bae6fd" />
+    </linearGradient>
+
+    <linearGradient id="edge-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <feStop offset="0%" stop-color="#f0f9ff" />
+      <feStop offset="100%" stop-color="#e0f2fe" />
+    </linearGradient>
+
+    <linearGradient id="card-orange" x1="0%" y1="0%" x2="0%" y2="100%">
+      <feStop offset="0%" stop-color="#ffffff" />
+      <feStop offset="100%" stop-color="#ffedd5" />
+    </linearGradient>
+
+    <linearGradient id="card-blue" x1="0%" y1="0%" x2="0%" y2="100%">
+      <feStop offset="0%" stop-color="#ffffff" />
+      <feStop offset="100%" stop-color="#f8fafc" />
+    </linearGradient>
+
+    <linearGradient id="green-agg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <feStop offset="0%" stop-color="#dcfce7" />
+      <feStop offset="50%" stop-color="#bbf7d0" />
+      <feStop offset="100%" stop-color="#dcfce7" />
+    </linearGradient>
+
+    <linearGradient id="orange-pill" x1="0%" y1="0%" x2="100%" y2="0%">
+      <feStop offset="0%" stop-color="#f97316" />
+      <feStop offset="50%" stop-color="#ea580c" />
+      <feStop offset="100%" stop-color="#c2410c" />
+    </linearGradient>
+
+    <linearGradient id="server-top" x1="0%" y1="0%" x2="100%" y2="100%">
+      <feStop offset="0%" stop-color="#475569" />
+      <feStop offset="100%" stop-color="#334155" />
+    </linearGradient>
+    <linearGradient id="server-front" x1="0%" y1="0%" x2="0%" y2="100%">
+      <feStop offset="0%" stop-color="#1e293b" />
+      <feStop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="server-side" x1="0%" y1="0%" x2="100%" y2="0%">
+      <feStop offset="0%" stop-color="#334155" />
+      <feStop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+
+    <linearGradient id="db-cyl" x1="0%" y1="0%" x2="100%" y2="0%">
+      <feStop offset="0%" stop-color="#38bdf8" />
+      <feStop offset="50%" stop-color="#0284c7" />
+      <feStop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+
+    <!-- Markers for arrows -->
+    <marker id="m-arrow-blue" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 10 L 5 0 L 10 10 z" fill="#2563eb" />
+    </marker>
+    <marker id="m-arrow-green" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 10 L 5 0 L 10 10 z" fill="#16a34a" />
+    </marker>
+  </defs>
+
+  <!-- ========================================================================= -->
+  <!-- 1. TOP TIER: CLOUD LAYER                                                  -->
+  <!-- ========================================================================= -->
+  <g id="cloud-section">
+    <!-- Dashed Container -->
+    <rect x="50" y="30" width="1000" height="175" rx="16" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="8,8" />
+
+    <!-- 3D Glossy Cloud Illustration (Centered) -->
+    <g transform="translate(390, 15)" filter="url(#shadow-cloud)">
+      <path d="M 80 40 
+               C 80 25, 98 12, 118 12 
+               C 134 12, 147 20, 154 32 
+               C 162 26, 174 24, 185 24 
+               C 210 24, 230 42, 230 65 
+               C 238 68, 246 76, 246 86 
+               C 246 98, 235 108, 222 108 
+               L 75 108 
+               C 58 108, 45 95, 45 78 
+               C 45 64, 56 52, 70 50 
+               C 72 46, 75 42, 80 40 Z" 
+            fill="url(#cloud-grad)" stroke="#93c5fd" stroke-width="2" />
+      
+      <!-- Inner text inside/over cloud -->
+      <text x="145" y="62" font-size="20" font-weight="800" fill="#1e3a8a" text-anchor="middle" letter-spacing="0.5">Cloud Layer</text>
+      <text x="145" y="83" font-size="12" font-weight="600" fill="#475569" text-anchor="middle">Centralized Analytics &amp; Storage</text>
+    </g>
+
+    <!-- 4 Cards inside Cloud Layer -->
+    <!-- Card 1: Model Training -->
+    <g transform="translate(75, 112)" filter="url(#shadow-card)">
+      <rect width="215" height="74" rx="10" fill="url(#card-orange)" stroke="#fed7aa" stroke-width="1.5" />
+      <!-- Icon 1: AI / Model Training (Gear + Nodes) -->
+      <g transform="translate(14, 15)">
+        <circle cx="22" cy="22" r="20" fill="#ffedd5" />
+        <circle cx="22" cy="22" r="8" fill="none" stroke="#d97706" stroke-width="2.5" />
+        <path d="M 22 8 L 22 14 M 22 30 L 22 36 M 8 22 L 14 22 M 30 22 L 36 22 M 12 12 L 16 16 M 28 28 L 32 32 M 12 32 L 16 28 M 28 16 L 32 12" stroke="#d97706" stroke-width="2.5" />
+        <circle cx="15" cy="18" r="3" fill="#2563eb" />
+        <circle cx="29" cy="18" r="3" fill="#2563eb" />
+        <circle cx="22" cy="28" r="3" fill="#2563eb" />
+      </g>
+      <text x="64" y="34" font-size="14" font-weight="700" fill="#1e293b">Model Training</text>
+      <text x="64" y="52" font-size="11" font-weight="500" fill="#64748b">Google Colab (GPU Cloud)</text>
+    </g>
+
+    <!-- Card 2: Big Data Analytics -->
+    <g transform="translate(315, 112)" filter="url(#shadow-card)">
+      <rect width="215" height="74" rx="10" fill="url(#card-orange)" stroke="#fed7aa" stroke-width="1.5" />
+      <!-- Icon 2: Big Data Server Cylinder -->
+      <g transform="translate(14, 15)">
+        <circle cx="22" cy="22" r="20" fill="#ffedd5" />
+        <!-- Stacked 3D DB disks -->
+        <ellipse cx="22" cy="15" rx="12" ry="4.5" fill="#3b82f6" stroke="#1d4ed8" stroke-width="1.5" />
+        <path d="M 10 15 L 10 22 A 12 4.5 0 0 0 34 22 L 34 15" fill="#60a5fa" stroke="#1d4ed8" stroke-width="1.5" />
+        <path d="M 10 22 L 10 29 A 12 4.5 0 0 0 34 29 L 34 22" fill="#93c5fd" stroke="#1d4ed8" stroke-width="1.5" />
+        <!-- Plus sign icon -->
+        <circle cx="29" cy="27" r="5" fill="#22c55e" />
+        <path d="M 27 27 L 31 27 M 29 25 L 29 29" stroke="#ffffff" stroke-width="1.5" />
+      </g>
+      <text x="64" y="34" font-size="14" font-weight="700" fill="#1e293b">Big Data Analytics</text>
+      <text x="64" y="52" font-size="11" font-weight="500" fill="#64748b">Roboflow PPE Dataset</text>
+    </g>
+
+    <!-- Card 3: Long-Term Storage -->
+    <g transform="translate(555, 112)" filter="url(#shadow-card)">
+      <rect width="215" height="74" rx="10" fill="url(#card-orange)" stroke="#fed7aa" stroke-width="1.5" />
+      <!-- Icon 3: Long Term Storage with Clock -->
+      <g transform="translate(14, 15)">
+        <circle cx="22" cy="22" r="20" fill="#ffedd5" />
+        <ellipse cx="22" cy="15" rx="12" ry="4.5" fill="#3b82f6" stroke="#1d4ed8" stroke-width="1.5" />
+        <path d="M 10 15 L 10 27 A 12 4.5 0 0 0 34 27 L 34 15" fill="#60a5fa" stroke="#1d4ed8" stroke-width="1.5" />
+        <!-- Magnifier / Clock -->
+        <circle cx="28" cy="26" r="6" fill="#ffffff" stroke="#ea580c" stroke-width="1.5" />
+        <path d="M 28 23 L 28 26 L 30 26" stroke="#ea580c" stroke-width="1.2" fill="none" />
+      </g>
+      <text x="64" y="34" font-size="14" font-weight="700" fill="#1e293b">Long-Term Storage</text>
+      <text x="64" y="52" font-size="11" font-weight="500" fill="#64748b">best.pt Weights &amp; Logs</text>
+    </g>
+
+    <!-- Card 4: System Management -->
+    <g transform="translate(795, 112)" filter="url(#shadow-card)">
+      <rect width="230" height="74" rx="10" fill="url(#card-orange)" stroke="#fed7aa" stroke-width="1.5" />
+      <!-- Icon 4: Interconnected Gears -->
+      <g transform="translate(14, 15)">
+        <circle cx="22" cy="22" r="20" fill="#ffedd5" />
+        <!-- Big Gear -->
+        <circle cx="19" cy="19" r="6" fill="none" stroke="#2563eb" stroke-width="2.5" />
+        <path d="M 19 9 L 19 13 M 19 25 L 19 29 M 9 19 L 13 19 M 25 19 L 29 19 M 12 12 L 15 15 M 23 23 L 26 26" stroke="#2563eb" stroke-width="2.5" />
+        <!-- Small Gear -->
+        <circle cx="28" cy="28" r="4" fill="none" stroke="#d97706" stroke-width="2" />
+        <path d="M 28 22 L 28 24 M 28 32 L 28 34 M 22 28 L 24 28 M 32 28 L 34 28" stroke="#d97706" stroke-width="2" />
+      </g>
+      <text x="64" y="34" font-size="14" font-weight="700" fill="#1e293b">System Management</text>
+      <text x="64" y="52" font-size="11" font-weight="500" fill="#64748b">Compliance Auditing</text>
+    </g>
+  </g>
+
+  <!-- Blue Arrow (Edge -> Cloud) -->
+  <g>
+    <line x1="550" y1="240" x2="550" y2="210" stroke="#2563eb" stroke-width="4" marker-end="url(#m-arrow-blue)" />
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- 2. MIDDLE TIER: EDGE LAYER                                                -->
+  <!-- ========================================================================= -->
+  <g id="edge-section">
+    <!-- Edge Container -->
+    <rect x="50" y="245" width="1000" height="260" rx="18" fill="url(#edge-bg)" stroke="#93c5fd" stroke-width="2" />
+    
+    <!-- Title -->
+    <text x="550" y="278" font-size="22" font-weight="800" fill="#1d4ed8" text-anchor="middle" letter-spacing="0.5">Edge Layer</text>
+
+    <!-- Left Card 1: Data Preprocessing -->
+    <g transform="translate(85, 305)" filter="url(#shadow-card)">
+      <rect width="180" height="90" rx="10" fill="url(#card-orange)" stroke="#fdba74" stroke-width="1.5" />
+      <text x="90" y="38" font-size="15" font-weight="700" fill="#1e293b" text-anchor="middle">Data</text>
+      <text x="90" y="58" font-size="15" font-weight="700" fill="#1e293b" text-anchor="middle">Preprocessing</text>
+      <text x="90" y="76" font-size="11" font-weight="500" fill="#64748b" text-anchor="middle">Zero-Buffer, Letterbox</text>
+    </g>
+
+    <!-- Left Card 2: Feature Extraction -->
+    <g transform="translate(285, 305)" filter="url(#shadow-card)">
+      <rect width="175" height="90" rx="10" fill="url(#card-orange)" stroke="#fdba74" stroke-width="1.5" />
+      <text x="87" y="38" font-size="15" font-weight="700" fill="#1e293b" text-anchor="middle">Feature</text>
+      <text x="87" y="58" font-size="15" font-weight="700" fill="#1e293b" text-anchor="middle">Extraction</text>
+      <text x="87" y="76" font-size="11" font-weight="500" fill="#64748b" text-anchor="middle">Deep Person Crop Scan</text>
+    </g>
+
+    <!-- ================= 3D ISOMETRIC EDGE SERVER (CENTER) ================= -->
+    <g transform="translate(480, 280)" filter="url(#shadow-server)">
+      <!-- Wi-Fi Radiation Waves -->
+      <path d="M 60 18 A 20 20 0 0 1 80 18" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" />
+      <path d="M 53 12 A 30 30 0 0 1 87 12" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round" />
+      <circle cx="70" cy="22" r="3" fill="#0284c7" />
+
+      <!-- Isometric Top Face -->
+      <polygon points="15,45 85,25 135,45 65,65" fill="url(#server-top)" stroke="#1e293b" stroke-width="1.5" />
+      <!-- Isometric Left Front Face -->
+      <polygon points="15,45 65,65 65,130 15,110" fill="url(#server-front)" stroke="#0f172a" stroke-width="1.5" />
+      <!-- Isometric Right Face -->
+      <polygon points="65,65 135,45 135,110 65,130" fill="url(#server-side)" stroke="#0f172a" stroke-width="1.5" />
+
+      <!-- Server Drive Bays & LED Lights (Front) -->
+      <!-- Rack 1 -->
+      <polygon points="20,53 58,68 58,78 20,63" fill="#334155" />
+      <circle cx="26" cy="61" r="2" fill="#22c55e" />
+      <circle cx="33" cy="63" r="2" fill="#38bdf8" />
+      <line x1="39" y1="67" x2="54" y2="72" stroke="#64748b" stroke-width="1.5" />
+
+      <!-- Rack 2 -->
+      <polygon points="20,68 58,83 58,93 20,78" fill="#334155" />
+      <circle cx="26" cy="76" r="2" fill="#22c55e" />
+      <circle cx="33" cy="78" r="2" fill="#eab308" />
+      <line x1="39" y1="82" x2="54" y2="87" stroke="#64748b" stroke-width="1.5" />
+
+      <!-- Rack 3 (Bottom) -->
+      <polygon points="20,83 58,98 58,108 20,93" fill="#334155" />
+      <circle cx="26" cy="91" r="2" fill="#22c55e" />
+      <circle cx="33" cy="93" r="2" fill="#38bdf8" />
+      <line x1="39" y1="97" x2="54" y2="102" stroke="#64748b" stroke-width="1.5" />
+
+      <!-- Right Side Ventilation Grids -->
+      <line x1="75" y1="68" x2="125" y2="53" stroke="#475569" stroke-width="2" />
+      <line x1="75" y1="78" x2="125" y2="63" stroke="#475569" stroke-width="2" />
+      <line x1="75" y1="88" x2="125" y2="73" stroke="#475569" stroke-width="2" />
+      <line x1="75" y1="98" x2="125" y2="83" stroke="#475569" stroke-width="2" />
+    </g>
+
+    <!-- Bus lines connecting Server to Cards -->
+    <path d="M 470 350 L 460 350 L 460 415 L 430 415" fill="none" stroke="#1e293b" stroke-width="2" />
+    <circle cx="430" cy="415" r="4" fill="#1e293b" />
+    <path d="M 630 350 L 640 350 L 640 415 L 670 415" fill="none" stroke="#1e293b" stroke-width="2" />
+    <circle cx="670" cy="415" r="4" fill="#1e293b" />
+    <!-- Label under server -->
+    <text x="550" y="420" font-size="13" font-weight="700" fill="#1e3a8a" text-anchor="middle">Edge Gateway / Edge Server</text>
+
+    <!-- Right Card 3: AI Inference -->
+    <g transform="translate(640, 305)" filter="url(#shadow-card)">
+      <rect width="185" height="90" rx="10" fill="url(#card-orange)" stroke="#fdba74" stroke-width="1.5" />
+      <text x="75" y="44" font-size="15" font-weight="700" fill="#1e293b" text-anchor="middle">AI Inference</text>
+      <!-- Brain / AI Neural Icon -->
+      <g transform="translate(125, 25)">
+        <circle cx="20" cy="20" r="18" fill="#ffedd5" />
+        <path d="M 14 14 C 11 14 9 17 9 20 C 9 23 11 26 14 26 M 26 14 C 29 14 31 17 31 20 C 31 23 29 26 26 26 M 17 12 C 17 8 23 8 23 12 M 20 12 L 20 28" stroke="#ea580c" stroke-width="2" fill="none" />
+        <circle cx="14" cy="18" r="2" fill="#2563eb" />
+        <circle cx="26" cy="18" r="2" fill="#2563eb" />
+        <circle cx="20" cy="24" r="2" fill="#2563eb" />
+      </g>
+      <text x="75" y="68" font-size="11" font-weight="500" fill="#64748b" text-anchor="middle">YOLOv8 + best.pt</text>
+    </g>
+
+    <!-- Right Card 4: Event Detection -->
+    <g transform="translate(845, 305)" filter="url(#shadow-card)">
+      <rect width="175" height="90" rx="10" fill="url(#card-orange)" stroke="#fdba74" stroke-width="1.5" />
+      <text x="70" y="44" font-size="15" font-weight="700" fill="#1e293b" text-anchor="middle">Event Detection</text>
+      <!-- 3D Red Alert Warning Triangle -->
+      <g transform="translate(122, 23)">
+        <polygon points="18,6 33,32 3,32" fill="#ef4444" stroke="#b91c1c" stroke-width="1.5" />
+        <text x="18" y="27" font-size="16" font-weight="900" fill="#ffffff" text-anchor="middle">!</text>
+      </g>
+      <text x="70" y="68" font-size="11" font-weight="600" fill="#dc2626" text-anchor="middle">PPE Violation Alert</text>
+    </g>
+
+    <!-- Local Aggregation & Filtering Green Bar -->
+    <g transform="translate(150, 442)" filter="url(#shadow-card)">
+      <rect width="800" height="46" rx="10" fill="url(#green-agg)" stroke="#86efac" stroke-width="2" />
+      
+      <!-- 3D Stacked Database Cylinders on left of bar -->
+      <g transform="translate(18, 6)">
+        <ellipse cx="20" cy="10" rx="14" ry="5" fill="#0284c7" stroke="#0369a1" stroke-width="1.5" />
+        <path d="M 6 10 L 6 18 A 14 5 0 0 0 34 18 L 34 10" fill="#38bdf8" stroke="#0369a1" stroke-width="1.5" />
+        <path d="M 6 18 L 6 26 A 14 5 0 0 0 34 26 L 34 18" fill="#0284c7" stroke="#0369a1" stroke-width="1.5" />
+        <ellipse cx="20" cy="18" rx="14" ry="5" fill="none" stroke="#0369a1" stroke-width="1.2" />
+      </g>
+
+      <text x="420" y="29" font-size="15" font-weight="800" fill="#166534" text-anchor="middle" letter-spacing="0.3">
+        Local Aggregation &amp; Filtering (OpenCV cv2.CAP_FFMPEG | TCP 554 | Zero-Buffer)
+      </text>
+    </g>
+  </g>
+
+  <!-- 3 Green Arrows (Sensor -> Edge) -->
+  <g>
+    <line x1="220" y1="540" x2="220" y2="500" stroke="#16a34a" stroke-width="4" marker-end="url(#m-arrow-green)" />
+    <line x1="550" y1="540" x2="550" y2="500" stroke="#16a34a" stroke-width="4" marker-end="url(#m-arrow-green)" />
+    <line x1="880" y1="540" x2="880" y2="500" stroke="#16a34a" stroke-width="4" marker-end="url(#m-arrow-green)" />
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- 3. BOTTOM TIER: SENSOR / DATA COLLECTION LAYER                           -->
+  <!-- ========================================================================= -->
+  <g id="sensor-section">
+    <!-- Dashed Container -->
+    <rect x="50" y="540" width="1000" height="195" rx="18" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="8,8" />
+
+    <!-- Item 1: IoT Sensors (Thermometer + Waves + Drop) -->
+    <g transform="translate(100, 560)">
+      <!-- Circle backdrop -->
+      <circle cx="65" cy="50" r="38" fill="#f1f5f9" />
+      <!-- Glass Thermometer -->
+      <rect x="52" y="24" width="8" height="36" rx="4" fill="#ffffff" stroke="#64748b" stroke-width="2" />
+      <circle cx="56" cy="62" r="10" fill="#ef4444" stroke="#b91c1c" stroke-width="2" />
+      <rect x="54" y="38" width="4" height="22" rx="2" fill="#ef4444" />
+      <!-- Wireless Waves -->
+      <path d="M 68 38 A 12 12 0 0 1 68 54" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round" />
+      <path d="M 74 32 A 20 20 0 0 1 74 60" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" />
+      <!-- Water Droplet -->
+      <path d="M 82 48 C 82 40, 89 33, 89 33 C 89 33, 96 40, 96 48 C 96 52, 93 56, 89 56 C 85 56, 82 52, 82 48 Z" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5" />
+      
+      <text x="65" y="108" font-size="14" font-weight="700" fill="#1e293b" text-anchor="middle">IoT Sensors</text>
+      <text x="65" y="125" font-size="11" font-weight="500" fill="#64748b" text-anchor="middle">Environmental &amp; Thermal</text>
+    </g>
+
+    <!-- Item 2: Camera Sensors (Realistic CCTV Bullet Camera) -->
+    <g transform="translate(340, 560)">
+      <circle cx="70" cy="50" r="38" fill="#f1f5f9" />
+      <!-- CCTV Body -->
+      <path d="M 38 46 L 78 30 L 88 44 L 46 62 Z" fill="#334155" stroke="#0f172a" stroke-width="1.5" />
+      <!-- Sunshield Hood -->
+      <path d="M 34 42 L 80 25 L 82 30 L 38 47 Z" fill="#64748b" />
+      <!-- Front Lens & Dark Glass Reflection -->
+      <ellipse cx="42" cy="54" rx="5" ry="9" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+      <circle cx="42" cy="54" r="3" fill="#38bdf8" />
+      <!-- Bracket & Articulated Base -->
+      <rect x="74" y="44" width="8" height="18" fill="#475569" transform="rotate(-30 74 44)" />
+      <path d="M 80 58 L 80 72 L 68 72 M 80 72 L 92 72" stroke="#334155" stroke-width="3.5" fill="none" stroke-linecap="round" />
+      
+      <text x="70" y="108" font-size="14" font-weight="700" fill="#1e293b" text-anchor="middle">Camera Sensors</text>
+      <text x="70" y="125" font-size="11" font-weight="600" fill="#0284c7" text-anchor="middle">Imou IP Camera (1080p RJ45)</text>
+    </g>
+
+    <!-- Item 3: Wearable Devices (Modern Smartwatch with Heart Pulse) -->
+    <g transform="translate(590, 560)">
+      <circle cx="65" cy="50" r="38" fill="#f1f5f9" />
+      <!-- Watch Strap -->
+      <rect x="52" y="16" width="26" height="68" rx="6" fill="#475569" stroke="#1e293b" stroke-width="1.5" />
+      <!-- Watch Screen Body -->
+      <rect x="46" y="28" width="38" height="44" rx="8" fill="#0f172a" stroke="#94a3b8" stroke-width="2" />
+      <!-- Heart Icon with Pulse Graph -->
+      <path d="M 65 42 
+               C 65 38, 59 34, 55 38 
+               C 50 42, 53 48, 65 57 
+               C 77 48, 80 42, 75 38 
+               C 71 34, 65 38, 65 42 Z" fill="#f43f5e" />
+      <!-- Pulse line -->
+      <path d="M 50 50 L 57 50 L 60 44 L 63 56 L 66 48 L 70 50 L 78 50" fill="none" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+
+      <text x="65" y="108" font-size="14" font-weight="700" fill="#1e293b" text-anchor="middle">Wearable Devices</text>
+      <text x="65" y="125" font-size="11" font-weight="500" fill="#64748b" text-anchor="middle">Vitals &amp; Safety Trackers</text>
+    </g>
+
+    <!-- Item 4: Industrial Sensors & Worksite Entities -->
+    <g transform="translate(830, 560)">
+      <circle cx="70" cy="50" r="38" fill="#f1f5f9" />
+      <!-- Articulated Industrial Robotic Arm -->
+      <!-- Base -->
+      <rect x="56" y="66" width="30" height="8" rx="2" fill="#334155" />
+      <!-- Arm Segment 1 -->
+      <line x1="71" y1="66" x2="60" y2="44" stroke="#f59e0b" stroke-width="6" stroke-linecap="round" />
+      <circle cx="60" cy="44" r="5" fill="#0f172a" />
+      <!-- Arm Segment 2 -->
+      <line x1="60" y1="44" x2="82" y2="30" stroke="#f59e0b" stroke-width="5" stroke-linecap="round" />
+      <circle cx="82" cy="30" r="4" fill="#0f172a" />
+      <!-- Gripper Tool -->
+      <path d="M 82 30 L 92 24 M 82 30 L 92 36" stroke="#475569" stroke-width="3" stroke-linecap="round" />
+      <!-- Worksite PPE Tag: Hardhat & Vest -->
+      <circle cx="42" cy="36" r="6" fill="#f59e0b" />
+      <path d="M 36 44 L 48 44 L 46 54 L 38 54 Z" fill="#22c55e" />
+
+      <text x="70" y="108" font-size="14" font-weight="700" fill="#1e293b" text-anchor="middle">Industrial Sensors</text>
+      <text x="70" y="125" font-size="11" font-weight="500" fill="#64748b" text-anchor="middle">Workers &amp; Factory Equipment</text>
+    </g>
+
+    <!-- Bottom Bronze/Orange Pill Bar -->
+    <g transform="translate(180, 690)" filter="url(#shadow-card)">
+      <rect width="740" height="24" rx="12" fill="url(#orange-pill)" />
+      <text x="370" y="17" font-size="12" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="0.5">
+        Sensor Layer Data Collection
+      </text>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- 4. BOTTOM CAPTION / TITLE                                                 -->
+  <!-- ========================================================================= -->
+  <text x="550" y="780" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle" letter-spacing="0.3">
+    Architecture of Edge AI for Sensor Data Processing
+  </text>
+</svg>
+</div>
+</body>
+</html>

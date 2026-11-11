@@ -1,0 +1,49 @@
+@startuml
+!theme plain
+skinparam roundcorner 12
+skinparam defaultFontName "Segoe UI"
+skinparam defaultFontSize 12
+skinparam shadowing true
+
+skinparam package {
+    BackgroundColor<<cloud>> #f8fafc
+    BorderColor<<cloud>> #94a3b8
+    BorderStyle<<cloud>> dashed
+    
+    BackgroundColor<<edge>> #ebf8ff
+    BorderColor<<edge>> #3182ce
+    
+    BackgroundColor<<sensor>> #f8fafc
+    BorderColor<<sensor>> #94a3b8
+    BorderStyle<<sensor>> dashed
+}
+
+package "☁️ Cloud Layer (Centralized Analytics & Training)" as Cloud <<cloud>> {
+    rectangle "🛠️ Model Training\n(Google Colab GPU)" as C1 #fffaf0
+    rectangle "🗄️ Dataset Repository\n(Roboflow PPE Universe)" as C2 #fffaf0
+    rectangle "📦 Weight Deployment\n(best.pt Export)" as C3 #fffaf0
+    rectangle "📊 System Monitoring\n(Compliance & Auditing)" as C4 #fffaf0
+}
+
+package "🖥️ Edge Layer (Local Edge PC / Workstation)" as Edge <<edge>> {
+    rectangle "⚙️ Data Preprocessing\n(Zero-Buffer, Letterbox 640)" as E1 #fffaf0
+    rectangle "🔍 Feature Extraction\n(Deep Person Crop Scan)" as E2 #fffaf0
+    node "🖥️ Edge PC Gateway\n(Python Runtime)" as EHub #1e293b
+    rectangle "🧠 AI Inference Engine\n(YOLOv8 + best.pt)" as E3 #fffaf0
+    rectangle "⚠️ Event Detection\n(PPE Violation Rules)" as E4 #fffaf0
+    
+    rectangle "📥 Local Stream Aggregation & Ingestion (OpenCV CAP_FFMPEG | TCP 554)" as Agg #c6f6d5
+}
+
+package "📷 Sensor Layer (Data Collection & Worksite Sensing)" as Sensor <<sensor>> {
+    rectangle "📹 Camera Sensors\n(Imou Bullet/Dome 1080p)" as S1 #ffffff
+    rectangle "🔌 RJ45 Interface\n(Direct Ethernet Cable)" as S2 #ffffff
+    rectangle "👷 Physical Entities\n(Workers, Hardhat, Vest, Gloves)" as S3 #ffffff
+    rectangle "📸 Violation Storage\n(snapshots/ JPG Evidence)" as S4 #ffffff
+}
+
+Sensor -[#38a169,thickness=3]-> Agg : Luồng Video RTSP (H.264 Raw Frames)
+Agg -> EHub
+EHub -[#3182ce,thickness=3]-> Cloud : Đồng bộ Weights best.pt & Báo cáo vi phạm
+
+@enduml

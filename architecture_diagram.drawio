@@ -1,0 +1,138 @@
+<mxfile host="app.diagrams.net" modified="2026-11-06T10:05:00.000Z" agent="Antigravity" version="21.0.0" type="device">
+  <diagram id="EdgeAI-PPE-Architecture" name="Architecture of Edge AI for PPE">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ================= LAYER 3: CLOUD LAYER ================= -->
+        <mxCell id="cloud_container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#94a3b8;strokeWidth=2;dashed=1;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="80" y="40" width="940" height="150" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cloud_title" value="&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot; color=&quot;#1e3a8a&quot;&gt;☁️ Cloud Layer&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 11px;&quot; color=&quot;#475569&quot;&gt;Centralized Analytics, Dataset Management &amp;amp; Model Training&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="350" y="45" width="400" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- Cloud Card 1 -->
+        <mxCell id="cloud_c1" value="&lt;b&gt;Model Training&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#64748b&quot; style=&quot;font-size: 11px;&quot;&gt;Google Colab (GPU)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffaf0;strokeColor=#fbd38d;strokeWidth=1.5;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="95" width="190" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Cloud Card 2 -->
+        <mxCell id="cloud_c2" value="&lt;b&gt;Dataset Repository&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#64748b&quot; style=&quot;font-size: 11px;&quot;&gt;Roboflow PPE Universe&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffaf0;strokeColor=#fbd38d;strokeWidth=1.5;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="95" width="190" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Cloud Card 3 -->
+        <mxCell id="cloud_c3" value="&lt;b&gt;Weight Deployment&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#64748b&quot; style=&quot;font-size: 11px;&quot;&gt;best.pt Export (YOLOv8)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffaf0;strokeColor=#fbd38d;strokeWidth=1.5;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="95" width="190" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Cloud Card 4 -->
+        <mxCell id="cloud_c4" value="&lt;b&gt;System Monitoring&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#64748b&quot; style=&quot;font-size: 11px;&quot;&gt;Compliance &amp;amp; Auditing&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffaf0;strokeColor=#fbd38d;strokeWidth=1.5;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="95" width="190" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- ================= LAYER 2: EDGE LAYER ================= -->
+        <mxCell id="edge_container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ebf8ff;strokeColor=#3182ce;strokeWidth=2;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="80" y="230" width="940" height="230" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge_title" value="&lt;b&gt;&lt;font style=&quot;font-size: 16px;&quot; color=&quot;#1e3a8a&quot;&gt;🖥️ Edge Layer (Local Edge PC / Workstation)&lt;/font&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="320" y="235" width="460" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Edge Card 1: Data Preprocessing -->
+        <mxCell id="edge_c1" value="&lt;b&gt;Data&lt;br&gt;Preprocessing&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#64748b&quot; style=&quot;font-size: 10px;&quot;&gt;Zero-Buffer, Resize 640&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffaf0;strokeColor=#fbd38d;strokeWidth=1.5;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="280" width="170" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Edge Card 2: Feature Extraction -->
+        <mxCell id="edge_c2" value="&lt;b&gt;Feature&lt;br&gt;Extraction&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#64748b&quot; style=&quot;font-size: 10px;&quot;&gt;Deep Person Crop Scan&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffaf0;strokeColor=#fbd38d;strokeWidth=1.5;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="280" width="170" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Center Edge Server Box -->
+        <mxCell id="edge_server" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;Edge PC&lt;br&gt;Gateway&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#93c5fd&quot; style=&quot;font-size: 9px;&quot;&gt;Python App&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#0f172a;strokeWidth=2;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="505" y="280" width="90" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Edge Card 3: AI Inference -->
+        <mxCell id="edge_c3" value="&lt;b&gt;AI Inference&lt;br&gt;Engine&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#64748b&quot; style=&quot;font-size: 10px;&quot;&gt;YOLOv8 + best.pt&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffaf0;strokeColor=#fbd38d;strokeWidth=1.5;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="280" width="170" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Edge Card 4: Event Detection -->
+        <mxCell id="edge_c4" value="&lt;b&gt;Event Detection&lt;br&gt;&amp;amp; Safety Rules&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#dc2626&quot; style=&quot;font-size: 10px;&quot;&gt;⚠️ PPE Violation Alert&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffaf0;strokeColor=#fbd38d;strokeWidth=1.5;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="820" y="280" width="170" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Local Aggregation Green Bar -->
+        <mxCell id="edge_agg" value="&lt;b&gt;&lt;font color=&quot;#14532d&quot;&gt;📥 Local Stream Aggregation &amp;amp; Ingestion (OpenCV cv2.CAP_FFMPEG | TCP 554 | Zero-Buffer)&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c6f6d5;strokeColor=#38a169;strokeWidth=1.5;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="385" width="880" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- ================= LAYER 1: SENSOR LAYER ================= -->
+        <mxCell id="sensor_container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#94a3b8;strokeWidth=2;dashed=1;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="80" y="500" width="940" height="150" as="geometry" />
+        </mxCell>
+
+        <!-- Sensor Item 1: Camera Sensors -->
+        <mxCell id="sensor_s1" value="&lt;b&gt;📹 Camera Sensors&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#64748b&quot; style=&quot;font-size: 11px;&quot;&gt;Imou IP Camera (1080p)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;strokeWidth=1.5;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="520" width="190" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- Sensor Item 2: RJ45 Network -->
+        <mxCell id="sensor_s2" value="&lt;b&gt;🔌 RJ45 Interface&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#64748b&quot; style=&quot;font-size: 11px;&quot;&gt;Direct Ethernet Cable (LAN)&lt;br&gt;IP: 192.168.0.108&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;strokeWidth=1.5;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="520" width="190" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- Sensor Item 3: Physical Entities -->
+        <mxCell id="sensor_s3" value="&lt;b&gt;👷 Physical Entities&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#64748b&quot; style=&quot;font-size: 11px;&quot;&gt;Workers, Hardhat, Vest, Gloves&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;strokeWidth=1.5;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="520" width="190" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- Sensor Item 4: Violation Evidence -->
+        <mxCell id="sensor_s4" value="&lt;b&gt;📸 Violation Storage&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#64748b&quot; style=&quot;font-size: 11px;&quot;&gt;snapshots/ JPG Evidence&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cbd5e1;strokeWidth=1.5;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="520" width="190" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- Sensor Footer Bar -->
+        <mxCell id="sensor_bar" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;Sensor Layer Data Collection&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dd6b20;strokeColor=#c05621;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="610" width="600" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ================= CONNECTORS / ARROWS ================= -->
+        <!-- Arrow Sensor to Edge Left -->
+        <mxCell id="arrow_s_e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#38a169;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1" source="sensor_s1" target="edge_agg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow Sensor to Edge Center -->
+        <mxCell id="arrow_s_e2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#38a169;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1" source="sensor_s2" target="edge_agg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow Sensor to Edge Right -->
+        <mxCell id="arrow_s_e3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#38a169;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1" source="sensor_s3" target="edge_agg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow Edge to Cloud -->
+        <mxCell id="arrow_e_c" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#3182ce;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1" source="edge_container" target="cloud_container">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="230" as="sourcePoint" />
+            <mxPoint x="550" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Bottom Diagram Title -->
+        <mxCell id="diag_title" value="&lt;b&gt;&lt;font style=&quot;font-size: 17px;&quot;&gt;Architecture of Edge AI for PPE Compliance Monitoring&lt;/font&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="300" y="680" width="500" height="30" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
